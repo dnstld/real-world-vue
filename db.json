@@ -44,6 +44,42 @@
       "date": "2019-02-02T23:27:00.000Z",
       "time": "1:00",
       "attendees": []
+    },
+    {
+      "id": 7494556,
+      "user": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "category": "nature",
+      "organizer": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "title": "nature title",
+      "description": "abcdescription",
+      "location": "sumaré",
+      "date": "2020-04-01T15:09:00.000Z",
+      "time": "10:00",
+      "attendees": []
+    },
+    {
+      "id": 9989756,
+      "user": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "category": "housing",
+      "organizer": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "title": "qqq",
+      "description": "qqqq",
+      "location": "qqqq",
+      "date": "2020-04-03T15:11:00.000Z",
+      "time": "6:00",
+      "attendees": []
     }
   ]
 }
