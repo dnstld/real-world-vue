@@ -28,9 +28,24 @@ export const actions = {
     console.log(`User creating Event is ${rootState.user.user.name}`);
     dispatch("moduleName/actionToCall", null, { root: true });
 
-    return EventService.postEvent(event).then(() => {
-      commit("ADD_EVENT", event);
-    });
+    return EventService.postEvent(event)
+      .then(() => {
+        commit("ADD_EVENT", event);
+
+        const notification = {
+          type: "success",
+          message: "Your event has benn created"
+        };
+        dispatch("notification/add", notification, { root: true });
+      })
+      .catch(error => {
+        const notification = {
+          type: "error",
+          message: `There was a problem creating your event: ${error.message}`
+        };
+        dispatch("notification/add", notification, { root: true });
+        throw error;
+      });
   },
   fetchEvents({ commit, dispatch }, { perPage, page }) {
     EventService.getEvents(perPage, page)
