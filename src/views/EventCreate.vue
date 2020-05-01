@@ -6,7 +6,14 @@
         :options="categories"
         v-model="event.category"
         class="field"
+        :class="{ error: $v.event.category.$error }"
+        @blur="$v.event.category.$touch()"
       />
+      <template v-if="$v.event.category.$error">
+        <p v-if="!$v.event.category.required" class="errorMessage">
+          Category is required
+        </p>
+      </template>
 
       <h3>Name & describe your event</h3>
 
@@ -48,8 +55,16 @@
         :options="times"
         v-model="event.time"
         class="field"
+        :class="{ error: $v.event.time.$error }"
+        @blur="$v.event.time.$touch()"
       />
-      <!-- <input type="submit" class="button -fill-gradient" value="Submit" /> -->
+
+      <template v-if="$v.event.time.$error">
+        <p v-if="!$v.event.time.required" class="errorMessage">
+          Time is required
+        </p>
+      </template>
+
       <BaseButton type="submit" buttonClass="-fill-gradient">
         Submit
       </BaseButton>
@@ -60,6 +75,7 @@
 <script>
 import Datepicker from "vuejs-datepicker";
 import NProgress from "nprogress";
+import { required } from "vuelidate/lib/validators";
 
 export default {
   components: {
@@ -75,6 +91,16 @@ export default {
       categories: this.$store.state.categories,
       event: this.createFreshEventObject()
     };
+  },
+  validations: {
+    event: {
+      category: { required },
+      title: { required },
+      description: { required },
+      location: { required },
+      date: { required },
+      time: { required }
+    }
   },
   methods: {
     createEvent() {
@@ -116,5 +142,11 @@ export default {
 <style scoped>
 .field {
   margin-bottom: 24px;
+}
+.field.error {
+  border: 1px solid red;
+}
+p.errorMessage {
+  color: red;
 }
 </style>
