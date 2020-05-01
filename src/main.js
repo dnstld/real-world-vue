@@ -2,12 +2,15 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+import DateFilter from "@/filters/date";
 
 import upperFirst from "lodash/upperFirst";
 import camelCase from "lodash/camelCase";
 import Vuelidate from "vuelidate";
 
 import "nprogress/nprogress.css";
+
+Vue.filter("date", DateFilter);
 
 Vue.use(Vuelidate);
 
