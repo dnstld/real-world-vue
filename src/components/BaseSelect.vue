@@ -20,30 +20,15 @@
 // Vue-multiselect library
 
 <script>
+import { formFieldMixin } from "@/mixins/formFieldMixin";
 export default {
-  inheritAttrs: false,
-  props: {
-    options: {
-      type: Array,
-      required: true
-    },
-    label: {
-      type: String,
-      default: ""
-    },
-    value: [String, Number]
-  },
+  mixins: [formFieldMixin],
   computed: {
     listeners() {
       return {
         ...this.$listeners,
         input: this.updateValue
       };
-    }
-  },
-  methods: {
-    updateValue(event) {
-      this.$emit("input", event.target.value);
     }
   }
 };
